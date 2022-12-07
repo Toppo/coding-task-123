@@ -24,6 +24,8 @@ Route::post('/login', [AuthController::class, 'login']);
 
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::resource('clock', \App\Http\Controllers\ClockController::class);
+    Route::resource('clock', \App\Http\Controllers\ClockController::class, [
+        'except' => ['create', 'edit', 'store', 'destroy', 'index']
+    ]);
 });
 
