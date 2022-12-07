@@ -33,10 +33,15 @@
                 </div>
             </form>
         </div>
+        <div v-if="isAuthenticated">
+            <Clock />
+        </div>
     </div>
 </template>
 
 <script>
+import Clock from './ClockComponent.vue';
+
     export default {
         mounted() {
             console.log('Component mounted.')
@@ -47,6 +52,14 @@
                     email: '',
                     password: '',
                 }
+            }
+        },
+        computed: {
+            isAuthenticated() {
+                return this.$store.getters.isAuthenticated;
+            },
+            user() {
+                return this.$store.getters.user;
             }
         },
         methods: {
@@ -60,6 +73,9 @@
 
                 this.$store.dispatch('login', this.formData);
             }
+        },
+        components: {
+            Clock
         }
     }
 </script>

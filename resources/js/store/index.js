@@ -12,6 +12,7 @@ export default createStore({
             state.authenticated = true;
             state.token = data.token;
             state.user = data.user;
+
         }
     },
     actions: {
