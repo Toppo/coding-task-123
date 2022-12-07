@@ -7,7 +7,6 @@
 import * as VueRouter from 'vue-router';
 import { createApp } from 'vue';
 import './bootstrap';
-import ExampleComponent from './components/ExampleComponent.vue';
 import App from './App.vue';
 import store from "./store";
 import LoginComponent from "./components/LoginComponent.vue";
