@@ -21,7 +21,16 @@ export default createStore({
             const res = await axios.post('api/login', credentials); // error handling missing
             commit('authenticateUser', res.data)
             //router.push('/');
-        }
+        },
+        async register({ commit}, credentials) {
+            try {
+                const res = await axios.post('api/register', credentials);
+                alert('user ' + res.data.user.email + ' created');
+            } catch (e) {
+                alert(e.response.data.message);
+            }
+
+        },
     },
     getters: {
         isAuthenticated(state) {

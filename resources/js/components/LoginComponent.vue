@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <h1>Coding exercise</h1>
+
         <div class="row">
             <form action="#" @submit.prevent="handleLogin">
                 <div class="row mb-3">
@@ -34,14 +34,10 @@
                 </div>
             </form>
         </div>
-        <div v-if="isAuthenticated">
-            <Clock />
-        </div>
     </div>
 </template>
 
 <script>
-import Clock from './ClockComponent.vue';
 
     export default {
         mounted() {
@@ -75,8 +71,5 @@ import Clock from './ClockComponent.vue';
                 this.$store.dispatch('login', this.formData);
             }
         },
-        components: {
-            Clock
-        }
     }
 </script>

@@ -4,21 +4,36 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
+import * as VueRouter from 'vue-router';
 import { createApp } from 'vue';
+import './bootstrap';
 import ExampleComponent from './components/ExampleComponent.vue';
+import App from './App.vue';
 import store from "./store";
+import LoginComponent from "./components/LoginComponent.vue";
+import RegisterComponent from "./components/RegisterComponent.vue";
+import ClockComponent from "./components/ClockComponent.vue";
+import EditClockComponent from "./components/EditClockComponent.vue";
 
-/**
- * Next, we will create a fresh Vue application instance. You may then begin
- * registering components with the application instance so they are ready
- * to use in your application's views. An example is included for you.
- */
+const app = createApp(App)
 
-const app = createApp(ExampleComponent)
 
+const routes = [
+    { path: '/', component: LoginComponent },
+    { path: '/registration', component: RegisterComponent },
+    { path: '/clock', component: ClockComponent },
+    { path: '/edit-clock', component: EditClockComponent }
+];
+
+const router = VueRouter.createRouter({
+    history: VueRouter.createWebHashHistory(),
+    routes
+})
+
+
+app.use(router);
 app.use(store)
-//app.mount('#app');
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

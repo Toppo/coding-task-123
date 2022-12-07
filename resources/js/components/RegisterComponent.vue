@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <h1>Coding exercise</h1>
+
         <div class="row">
-            <form action="#" @submit.prevent="handleLogin">
+            <form action="#" @submit.prevent="handleRegister">
                 <div class="row mb-3">
 
                     <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
@@ -20,6 +20,20 @@
                 </div>
                 <div class="row mb-3">
 
+                    <label for="name" class="col-md-4 col-form-label text-md-end">Name</label>
+                    <div class="col-md-6">
+                        <input id="name"
+                               type="text"
+                               class="form-control"
+                               name="name"
+                               required
+
+                               v-model="formData.name">
+                    </div>
+
+                </div>
+                <div class="row mb-3">
+
                     <label for="password" class="col-md-4 col-form-label text-md-end">Password</label>
                     <div class="col-md-6">
                         <input id="password" type="password" class="form-control" name="password" required v-model="formData.password">
@@ -27,21 +41,25 @@
 
                 </div>
                 <div class="row mb-3">
+
+                    <label for="password_confirmation" class="col-md-4 col-form-label text-md-end">Password confirmation</label>
+                    <div class="col-md-6">
+                        <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" required v-model="formData.password_confirmation">
+                    </div>
+
+                </div>
+                <div class="row mb-3">
                     <div class="offset-md-4 col-md-12">
-                        <button type="submit" class="btn btn-primary">Sign In</button>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
                     </div>
 
                 </div>
             </form>
         </div>
-        <div v-if="isAuthenticated">
-            <Clock />
-        </div>
     </div>
 </template>
 
 <script>
-import Clock from './ClockComponent.vue';
 
     export default {
         mounted() {
@@ -51,7 +69,9 @@ import Clock from './ClockComponent.vue';
             return {
                 formData: {
                     email: '',
+                    name: '',
                     password: '',
+                    password_confirmation: '',
                 }
             }
         },
@@ -64,7 +84,7 @@ import Clock from './ClockComponent.vue';
             }
         },
         methods: {
-            handleLogin() {
+            handleRegister() {
                 // handle login
                 /*axios.get('/sanctum/csrf-cookie').then(response => {
                     axios.post('/api/login', this.formData).then(response => {
@@ -72,11 +92,8 @@ import Clock from './ClockComponent.vue';
                     }).catch(error => console.log(error)); // credentials didn't match
                 });*/
 
-                this.$store.dispatch('login', this.formData);
+                this.$store.dispatch('register', this.formData);
             }
         },
-        components: {
-            Clock
-        }
     }
 </script>

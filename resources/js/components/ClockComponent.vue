@@ -1,25 +1,16 @@
 <template>
     <div class="container">
         <div class="row">
-            <div v-if="isAuthenticated">
-                <h1>Welcome {{ user.name }}</h1>
-                <h2>Time is {{ this.time }}</h2>
-            </div>
-            <div v-else>
-                <h2>You have to login first</h2>
-            </div>
+
+            <h2>Time is {{ this.time }}</h2>
         </div>
     </div>
 </template>
-
-
 <script>
 export default {
     mounted() {
 
         console.log('Component mounted.')
-
-        //if (this.$store.getters.isAuthenticated()) {
             axios.get('/api/clock/1', {
                 headers : {
                     'Authorization': `Bearer ${this.$store.getters.userToken}`
