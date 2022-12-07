@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('clocks', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('time')->nullable();
+            $table->time('time')->nullable();
             $table->timestamps();
         });
     }
